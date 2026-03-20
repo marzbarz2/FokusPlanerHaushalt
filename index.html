@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FokusPlaner Haushalt</title>
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%23bb6f40"/><path d="M18 21h28v6H18zm0 10h20v6H18zm0 10h28v6H18z" fill="%23fffaf5"/></svg>'
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-intro">
+          <p class="eyebrow">FokusPlaner</p>
+          <h1>Wochenübersicht</h1>
+          <p class="hero-copy">Schnellansicht fuer diese Woche.</p>
+        </div>
+        <div class="hero-actions">
+          <label class="field-group">
+            <span>Woche im Zyklus</span>
+            <select id="weekSelect"></select>
+          </label>
+          <label class="field-group">
+            <span>Kalenderwoche</span>
+            <input id="calendarWeekInput" type="number" min="1" max="53" value="12" />
+          </label>
+        </div>
+      </header>
+
+      <main class="planner-layout">
+        <section class="sheet-panel routines-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Wochenblatt</p>
+              <h2 id="sheetTitle">Woche 1</h2>
+            </div>
+            <p class="muted-text" id="weekSummary"></p>
+          </div>
+          <div class="routine-grid">
+            <div class="routine-card">
+              <div class="card-title-row">
+                <h3>Morgenroutine</h3>
+                <span class="card-chip">Startklar</span>
+              </div>
+              <div id="morningRoutine" class="task-list"></div>
+            </div>
+            <div class="routine-card">
+              <div class="card-title-row">
+                <h3>Abendroutine</h3>
+                <span class="card-chip accent-chip">Reset</span>
+              </div>
+              <div id="eveningRoutine" class="task-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="planner-columns">
+          <div class="sheet-panel zones-panel">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="section-kicker">Zonen</p>
+                <h2>Zonen der Woche</h2>
+              </div>
+              <div class="zones-heading-actions">
+                <p class="muted-text">Bereiche bei Bedarf direkt in der Woche bearbeiten.</p>
+              </div>
+            </div>
+            <div id="zonesGrid" class="zones-grid"></div>
+          </div>
+
+          <div class="side-column">
+            <section class="sheet-panel focus-panel">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="section-kicker">Tagesfokus</p>
+                  <h2>Wochenthemen</h2>
+                </div>
+              </div>
+              <div id="dayFocusList" class="focus-list"></div>
+            </section>
+
+            <section class="sheet-panel reset-panel">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="section-kicker">Haus Reset</p>
+                  <h2>Einmal pro Woche</h2>
+                </div>
+              </div>
+              <div id="resetTaskList" class="reset-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="notes-layout">
+          <section class="sheet-panel notes-panel">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="section-kicker">Freitext</p>
+                <h2>Notizen</h2>
+              </div>
+            </div>
+            <textarea id="notesInput" class="notes-textarea" placeholder="Wichtige Punkte für diese Woche..."></textarea>
+          </section>
+
+          <section class="sheet-panel notes-panel">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="section-kicker">Extra</p>
+                <h2>Sonderaufgaben</h2>
+              </div>
+            </div>
+            <textarea id="specialTasksInput" class="notes-textarea" placeholder="Was diese Woche zusätzlich ansteht..."></textarea>
+          </section>
+        </section>
+
+        <section class="sheet-panel control-dock">
+          <div class="control-dock-row">
+            <button id="copyWeekButton" class="secondary-button" type="button">Neue Woche anlegen</button>
+            <button id="printButton" class="secondary-button" type="button">Drucken</button>
+            <button id="toggleEditModeTopButton" class="secondary-button" type="button">Wochenfelder bearbeiten</button>
+            <button id="exportBackupButton" class="secondary-button" type="button">Backup exportieren</button>
+            <button id="importBackupButton" class="secondary-button" type="button">Backup importieren</button>
+            <button id="openConfigButton" class="primary-button" type="button">Konfiguration bearbeiten</button>
+          </div>
+          <input id="importBackupInput" type="file" accept="application/json" hidden />
+          <div class="control-dock-meta">
+            <p id="configSourceText" class="hero-meta muted-text"></p>
+            <p id="editModeStatus" class="hero-meta"></p>
+            <p id="backupStatus" class="hero-meta muted-text"></p>
+            <p id="printSummary" class="hero-meta"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="configDialog" class="config-dialog">
+      <form method="dialog" class="config-form">
+        <div class="config-header">
+          <div>
+            <p class="section-kicker">Konfiguration</p>
+            <h2>5-Wochen-Zyklus bearbeiten</h2>
+          </div>
+          <button id="closeConfigButton" class="secondary-button" type="submit">Schließen</button>
+        </div>
+
+        <p class="dialog-copy">
+          Hier werden Routinen, Zonen und Wochen-Vorlagen als JSON gepflegt. Änderungen werden lokal gespeichert.
+        </p>
+
+        <textarea id="configEditor" class="config-editor" spellcheck="false"></textarea>
+
+        <div class="config-actions">
+          <button id="resetConfigButton" class="secondary-button" type="button">Standard wiederherstellen</button>
+          <button id="exportConfigButton" class="secondary-button" type="button">JSON exportieren</button>
+          <label class="import-button">
+            JSON importieren
+            <input id="importConfigInput" type="file" accept="application/json" hidden />
+          </label>
+          <button id="saveConfigButton" class="primary-button" type="button">Konfiguration speichern</button>
+        </div>
+        <p id="configStatus" class="status-text" aria-live="polite"></p>
+      </form>
+    </dialog>
+
+    <template id="taskRowTemplate">
+      <div class="task-row">
+        <div class="task-label-wrap">
+          <span class="task-prefix"></span>
+          <span class="task-label"></span>
+        </div>
+        <div class="weekday-checkboxes"></div>
+      </div>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+{
+  "cycleLength": 5,
+  "routines": {
+    "morning": [
+      "Waesche checken",
+      "Geschirrspueler ausraeumen",
+      "Bad auffrischen",
+      "Lueften oben und unten",
+      "Tagesaufgaben laut Plan"
+    ],
+    "evening": [
+      "Geschirrspueler einraeumen",
+      "Kueche aufraeumen",
+      "Arbeitsflaeche wischen",
+      "Spuele sauber machen",
+      "Esstisch und Kinderstuehle wischen",
+      "10 Minuten Aufraeumrunde",
+      "Waesche checken",
+      "Sachen fuer Kindergarten rauslegen"
+    ]
+  },
+  "dayFocus": [
+    { "day": "Montag", "topic": "Haus Reset" },
+    { "day": "Dienstag", "topic": "Plan and Pay" },
+    { "day": "Mittwoch", "topic": "Shopping" },
+    { "day": "Donnerstag", "topic": "Anti-Prokrastination" },
+    { "day": "Freitag", "topic": "Waesche" },
+    { "day": "Samstag", "topic": "Familie" },
+    { "day": "Sonntag", "topic": "Relay und Self Care" }
+  ],
+  "resetTasks": [
+    "Flaechen abstauben unten",
+    "Flaechen abstauben oben",
+    "Pflanzen giessen",
+    "Boeden saugen unten",
+    "Boeden saugen oben",
+    "Muelleimer Kueche sauber machen",
+    "Boeden wischen unten",
+    "Boeden wischen oben",
+    "Tueren wischen unten",
+    "Tueren wischen oben",
+    "Lichtschalter unten",
+    "Lichtschalter oben"
+  ],
+  "zones": [
+    {
+      "id": "essen-flur-bad-oben",
+      "title": "Esszimmer, Flur, Bad oben",
+      "subtitle": "Zone 1",
+      "taskPool": [
+        "Schuhe sortieren",
+        "Garderobe aufraeumen",
+        "Treppe saugen und wischen",
+        "Fenster wischen innen Flur unten und oben",
+        "Sideboard aufraeumen und wischen",
+        "Spinnweben entfernen",
+        "Stuehle reinigen",
+        "Lampen und Stahltraeger reinigen",
+        "Dusche und Abfluss reinigen",
+        "Badewanne und Abfluss reinigen",
+        "Toilette gruendlich reinigen",
+        "Spiegel und Waschbecken reinigen",
+        "Klopapier Check",
+        "Fenster innen im Bad wischen",
+        "Tueren und Lichtschalter reinigen"
+      ],
+      "tasksPerWeek": 7
+    },
+    {
+      "id": "kueche-speisekammer",
+      "title": "Kueche und Speisekammer",
+      "subtitle": "Zone 2",
+      "taskPool": [
+        "Kuechenfronten reinigen",
+        "Kuehlschrankflaechen abwischen",
+        "Speisekammer sortieren",
+        "Gewuerzregal ordnen",
+        "Mikrowelle reinigen",
+        "Backofen aussen wischen",
+        "Dunstabzug reinigen",
+        "Vorratsbehaelter pruefen",
+        "Besteckschublade auswischen",
+        "Arbeitsflaechen tief reinigen",
+        "Abfalleimer desinfizieren",
+        "Kaffeeecke ordnen"
+      ],
+      "tasksPerWeek": 6
+    },
+    {
+      "id": "wohnzimmer-buero",
+      "title": "Wohnzimmer und Buero",
+      "subtitle": "Zone 3",
+      "taskPool": [
+        "Regale entstauben",
+        "Papierstapel sortieren",
+        "Sofa absaugen",
+        "Spielzeugkorb ordnen",
+        "Couchtisch gruendlich wischen",
+        "Elektronik abstauben",
+        "Kabel ordnen",
+        "Fensterbank reinigen",
+        "Dekoration reduzieren",
+        "Arbeitsplatz zuruecksetzen",
+        "Schublade mit Kleinkram sortieren",
+        "Pflanzen pflegen"
+      ],
+      "tasksPerWeek": 6
+    },
+    {
+      "id": "schlafzimmer-kleidung",
+      "title": "Schlafzimmer und Kleidung",
+      "subtitle": "Zone 4",
+      "taskPool": [
+        "Nachttische aufraeumen",
+        "Schrankfach rotieren",
+        "Kleidung aussortieren",
+        "Bettkasten pruefen",
+        "Spiegel reinigen",
+        "Kommode wischen",
+        "Waescheberg abbauen",
+        "Bettwaesche wechseln",
+        "Accessoires sortieren",
+        "Schubladen neu falten",
+        "Unter-dem-Bett Bereich reinigen",
+        "Fenster innen wischen"
+      ],
+      "tasksPerWeek": 6
+    },
+    {
+      "id": "kinderzimmer-eingang",
+      "title": "Kinderzimmer und Eingang",
+      "subtitle": "Zone 5",
+      "taskPool": [
+        "Buecher neu sortieren",
+        "Bastelsachen ordnen",
+        "Schubladen im Eingang leeren",
+        "Jacken pruefen",
+        "Schul und Kindergarten Sachen sortieren",
+        "Erinnerungsbox aktualisieren",
+        "Schuhmatten reinigen",
+        "Spielbereiche resetten",
+        "Puzzleteile sortieren",
+        "Vorrat an Malsachen pruefen",
+        "Hakenleiste abwischen",
+        "Eingangstuer innen reinigen"
+      ],
+      "tasksPerWeek": 6
+    }
+  ],
+  "weeks": [
+    {
+      "id": "woche-1",
+      "label": "Woche 1",
+      "mood": "Klarer Start mit Fokus auf Eingangsfluss und Badrhythmus.",
+      "zoneOrder": ["essen-flur-bad-oben", "kueche-speisekammer"],
+      "zoneOffsets": {
+        "essen-flur-bad-oben": 0,
+        "kueche-speisekammer": 1
+      }
+    },
+    {
+      "id": "woche-2",
+      "label": "Woche 2",
+      "mood": "Mehr Tiefe in Kueche und Wohnbereichen, andere Reihenfolge.",
+      "zoneOrder": ["kueche-speisekammer", "wohnzimmer-buero"],
+      "zoneOffsets": {
+        "kueche-speisekammer": 3,
+        "wohnzimmer-buero": 1
+      }
+    },
+    {
+      "id": "woche-3",
+      "label": "Woche 3",
+      "mood": "Reset fuer Kleidung, Schlafzimmer und Familienlogistik.",
+      "zoneOrder": ["schlafzimmer-kleidung", "kinderzimmer-eingang"],
+      "zoneOffsets": {
+        "schlafzimmer-kleidung": 2,
+        "kinderzimmer-eingang": 1
+      }
+    },
+    {
+      "id": "woche-4",
+      "label": "Woche 4",
+      "mood": "Rueckkehr zu Wohnfluss und Bad, aber mit neuer Aufgabenrotation.",
+      "zoneOrder": ["wohnzimmer-buero", "essen-flur-bad-oben"],
+      "zoneOffsets": {
+        "wohnzimmer-buero": 4,
+        "essen-flur-bad-oben": 5
+      }
+    },
+    {
+      "id": "woche-5",
+      "label": "Woche 5",
+      "mood": "Abschlusswoche mit Mischung aus Eingang, Kueche und Schlafbereichen.",
+      "zoneOrder": ["kinderzimmer-eingang", "schlafzimmer-kleidung", "kueche-speisekammer"],
+      "zoneOffsets": {
+        "kinderzimmer-eingang": 4,
+        "schlafzimmer-kleidung": 5,
+        "kueche-speisekammer": 7
+      }
+    }
+  ]
+}
